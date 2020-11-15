@@ -1,0 +1,6 @@
+
+
+Safeguard against loops, e.g.,
+'last' => function() {
+    return '[last] Smith';
+},

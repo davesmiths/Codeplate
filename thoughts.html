@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+THIS IS THE FILE BEING EDITED
+<a role="include" href="heading1" />
+
+
+
+
+<a href="asdf98dfg90iasdfiuhdfg98" role="component">
+    <h1>Brilliant <small>The best book in the world</small></h1>
+</a>
+
+FILE asdf98dfg90iasdfiuhdfg98
+<h1>Brilliant <small>The best book in the world</small></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Define a component
+['//github.com/davesmiths/todocomponent/1.0.0/'] = {
+    "data": {}
+    "html": "",
+    "css": "",
+    "js": "",
+}
+// How to handle components with several separate parts
+['//github.com/davesmiths/todocomponent-linked-button/1.0.0/'] = {
+    "data": {}
+    "html": "",
+    "css": "",
+    "js": "",
+    // this component can capture and trigger events from the
+    // event stream of ['//github.com/davesmiths/todocomponent/1.0.0/']
+    // e.g. ['//github.com/davesmiths/todocomponent/'].on('add', function() {})
+    // e.g. ['//github.com/davesmiths/todocomponent/'].trigger('showall')
+}
+// The idea of writing html, css and js in a string is a nightmare. Which is why I think this all needs
+// to being authored in a client similar to codepen and store the strings here. Or create a syntax
+// highlighter to accommodate defining components in this way
+
+['htmldocument'] = {
+    "html": "<!DOCTYPE html>[html]"
+}
+['html'] = {
+    "html": "<html>[head][body]</html>"
+}
+['head'] = {
+    "data": {
+        title:"Another way to do things"
+    }
+    "html": "<head>[charset][title][meta][css][js]</head>"
+}
+['body'] = {
+    "html": "<body>[//github.com/davesmiths/todocomponent/]</body>",
+    "css": "margin:0;"
+}
+['title'] = {
+    "html": "<title>[content]</title>"
+}

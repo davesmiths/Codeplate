@@ -1,0 +1,305 @@
+
+Input
+    Bob
+Data
+    NULL
+Output
+    Bob
+
+-------------------
+
+Input
+    Bob
+    [lastname]
+Data
+    NULL
+Output:
+    Bob [lastname]
+
+-------------------
+
+Input
+    Bob
+    [lastname]
+    [template]
+Data becomes
+    NULL
+Output
+    Bob [lastname]
+
+-------------------
+
+Input
+    Bob
+    [lastname]
+    [template][/template]
+Data becomes
+    array(
+        'content' => 'Bob'
+        'lastname => NULL,
+    )
+Output
+    ''
+
+-------------------
+
+Input
+    Bob
+    [lastname][/lastname]
+    [template][/template]
+Data becomes
+    array(
+        'content' => 'Bob'
+        'lastname => array(
+            array(
+                'content' => ''
+            )
+        )
+    )
+Output
+    ''
+
+-------------------
+
+Input
+    Bob
+    [lastname]Smith[/lastname]
+    [template][/template]
+Data becomes
+    array(
+        'content' => 'Bob'
+        'lastname => array(
+            array(
+                'content' => 'Smith'
+            )
+        )
+    )
+Output
+    ''
+
+-------------------
+
+Input
+    Bob
+    [lastname]Smith[/lastname]
+    [template]Hello[/template]
+Data becomes
+    array(
+        'content' => 'Bob'
+        'lastname => array(
+            array(
+                'content' => 'Smith'
+            )
+        )
+    )
+Output
+    Hello
+
+-------------------
+
+Input
+    Bob
+    [lastname]Smith[/lastname]
+    [template]
+        Hello[content]
+    [/template]
+Data becomes
+    array(
+        'content' => 'Bob'
+        'lastname => array(
+            array(
+                'content' => 'Smith'
+            )
+        )
+    )
+Output
+    Hello Bob
+
+-------------------
+
+Input
+    Bob
+    [lastname]Smith[/lastname]
+    [template]
+        Hello[content] [lastname]
+    [/template]
+Data becomes
+    array(
+        'content' => 'Bob'
+        'lastname => array(
+            array(
+                'content' => 'Smith'
+            )
+        )
+    )
+Output
+    Hello Bob Smith
+
+------------------- Multiple items
+
+Input
+    Bob
+    [member]Smith[/member]
+    [member]Jones[/member]
+    [member]Kaiser[/member]
+    [template]
+        Hello[content]
+        [member]
+        [member]
+            <li>[content]</li>
+        [/member]
+    [/template]
+Data becomes
+    array(
+        'content' => 'Bob'
+        'member => array(
+            array(
+                'content' => 'Smith'
+            )
+            array(
+                'content' => 'Jones'
+            )
+            array(
+                'content' => 'Kaiser'
+            )
+        )
+    )
+Output
+    'Hello Bob SmithJonesKaiser<li>Smith</li><li>Jones</li><li>Kaiser</li>'
+
+------------------- Multiple items
+
+Input
+    Bob
+    [member]Frank Brabban[/member]
+    [member][first]Dave[/first][last]Smith[/last][/member]
+    [member][first]Jane[/first][last]Jones[/last][/member]
+    [member][first]Brad[/first][last]Coope[/last][/member]
+    [template]
+        Hello[content]
+        [member]
+        [member]
+            <li>[content]</li>
+        [/member]
+    [/template]
+Data becomes
+    array(
+        'content' => 'Bob'
+        'member => array(
+            array(
+                content => 'Frank Brabban'
+            )
+            array(
+                content => ''
+                first => array(
+                    array(
+                        content => 'Dave'
+                    )
+                )
+                last => array(
+                    array(
+                        content => 'Smith'
+                    )
+                )
+            )
+        )
+    )
+Output
+    'Hello Bob SmithJonesKaiser'
+
+------------------- Multiple items
+
+Input
+    Bob
+    [members]
+        [member]Smith[/member]
+        [member]Jones[/member]
+        [member]Kaiser[/member]
+        [template]
+            <li>[member]</li>
+        [/template]
+    [/members]
+    [template]
+        Hello[content]
+        [members]
+    [/template]
+Data becomes
+    array(
+        'content' => 'Bob'
+        'members => array(
+            array(
+                'content' => ''
+                'member' => array (
+                    array(
+                        'content' => 'Smith'
+                    )
+                )
+                'Smith'
+                'Jones'
+                'Kaiser'
+            )
+        )
+    )
+Output
+    'Hello Bob SmithJonesKaiser'
+
+-------------------
+
+Input
+    Bob
+    [member]Smith[/member]
+    [member]Jones[/member]
+    [member]Kaiser[/member]
+    [template]
+        Hello[content][member][/member]
+    [/template]
+Data becomes
+    array(
+        'content' => 'Bob'
+        'member => array(
+            'Smith'
+            'Jones'
+            'Kaiser'
+        )
+    )
+Output
+    'Hello Bob SmithJones'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+http://publicjobs.ie
+
+http://publicservice.ie/
+
+Jean O'Neil, Science Gallery
+
+
+
+
+
+
+
+=
